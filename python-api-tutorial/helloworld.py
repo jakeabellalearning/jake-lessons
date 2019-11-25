@@ -30,6 +30,22 @@ def revpages(rev,page):
 def redirected():
     return redirect(url_for('hellox',param="jake"))
 
+@app.route('/secondary')
+def secondary():
+    return "secondary - ";
+
+@app.route('/third/<student>')
+def third(student):
+    return "third - " +student;
+
+@app.route('/test/<varx>')
+def testing(varx):
+    if varx == 'jake' :
+        return redirect(url_for('secondary'));
+    else:
+        return redirect(url_for('third',student=varx))
+
+
 app.add_url_rule('/otherhello','otherhello',otherhello)
 app.add_url_rule('/hellox/<param>','hellox',hellox)
 if __name__ == '__main__':
@@ -38,6 +54,6 @@ if __name__ == '__main__':
 
 
 
-#https://www.tutorialspoint.com/flask/flask_url_building.htm
+
 
 
