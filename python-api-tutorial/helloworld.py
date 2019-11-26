@@ -1,4 +1,4 @@
-from flask import Flask,redirect,url_for
+from flask import Flask, redirect, url_for, request
 
 app = Flask(__name__)
 
@@ -44,6 +44,24 @@ def testing(varx):
         return redirect(url_for('secondary'));
     else:
         return redirect(url_for('third',student=varx))
+
+@app.route('/success/<name>/<age>')
+def success(name,age):
+   return 'welcome %s' + name + " - " +age;
+
+
+
+@app.route('/login/',methods=['POST','GET'])
+def login():
+    if(request.method =='POST'):
+        user = request.form['nm'];
+        agex = request.form['age'];
+        return redirect(url_for('success',name=user,age=agex))
+    else:
+        user = request.get('nm');
+        agex = request.get('age')
+        return redirect(url_for('success',name=user,age=agex))
+
 
 
 app.add_url_rule('/otherhello','otherhello',otherhello)
