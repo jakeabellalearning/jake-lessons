@@ -34,6 +34,11 @@ def revpages(rev,page):
     returnee = returnee + " for page %d " %page
     return returnee;
 
+@app.route('/kuyadict/')
+def result():
+    dict = {'phy':50,'che':60,'maths':70}
+    return render_template('kuyadict.html',result=dict)
+
 @app.route('/redirect')
 def redirected():
     return redirect(url_for('hellox',param="jake"))
