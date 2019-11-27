@@ -1,17 +1,25 @@
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request,render_template
 
 app = Flask(__name__)
 
 @app.route('/hello')
 def hello_world():
     return 'Hello World'
+@app.route('/hello/<user>')
+def hello_name(user):
+   return render_template('hello.html', name = user)
 
 def otherhello():
     return 'Other Hello';
 
 @app.route('/hello/<name>')
-def hello(name):
+def helloscore(name):
     return 'Hello : ' + name;
+
+@app.route('/hello/score/<int:score>')
+def hello(score):
+    return render_template('hello.html', marks = score)
+
 
 def hellox(param):
     return 'Hellox :' + param
