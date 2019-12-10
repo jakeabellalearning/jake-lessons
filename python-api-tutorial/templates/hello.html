@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'static.css') }}" ></link>
+   </head>
  <body>
+
       {% if marks>50 %}
          <h1> Your result is pass!</h1>
       {% else %}
          <h1>Your result is fail</h1>
       {% endif %}
+ <p>
+     TEST...Style
+     asdfadsf
+ </p>
    </body>
 
 </html>
